@@ -84,6 +84,6 @@ app.post("/api-login", async (req, res) => {
 app.use(express.static(path.join(__dirname, "./client/dist")));
 
 // this send back React's build's index.html file.
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
 });
