@@ -31,7 +31,7 @@ const Login = () => {
       toast.success("Login successfully");
       loginSuccessful = true;
       console.log("success");
-      navigate.push("/");
+      navigate("/");
       setLoginData({
         email: "",
         password: "",
