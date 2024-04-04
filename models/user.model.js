@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
-const connect = mongoose.connect(process.env.db);
-connect
+
+mongoose
+  .connect(process.env.db)
   .then(() => {
     console.log("connected successfully");
   })
   .catch((error) => {
     console.log("connection failed", error);
   });
+
 const UsersSchema = mongoose.Schema({
   username: {
     type: String,
