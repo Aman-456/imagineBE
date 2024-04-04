@@ -67,7 +67,7 @@ const Login = () => {
             <h1 className="mx-auto pb-6 text-[40px]">Login</h1>
             <form
               action=""
-              onSubmit={test}
+              onSubmit={handleLoginSubmit}
               className="flex flex-col  gap-2 text-start"
             >
               <label className="text-[20px]" htmlFor="">
