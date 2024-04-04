@@ -20,7 +20,7 @@ app.listen(port, (req, res) => {
 });
 
 // sign up post
-app.post("/signup", async (req, res) => {
+app.post("/api-signup", async (req, res) => {
   try {
     const data = {
       username: req.body.username,
@@ -54,7 +54,7 @@ app.post("/signup", async (req, res) => {
 });
 
 // login post
-app.post("/login", async (req, res) => {
+app.post("/api-login", async (req, res) => {
   try {
     const { email, password } = req.body;
 

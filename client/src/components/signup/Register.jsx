@@ -25,7 +25,7 @@ const Register = () => {
       }
 
       // Use Axios instead of fetch
-      const response = await axios.post(`${baseUrl}/signup`, formData, {
+      const response = await axios.post(`${baseUrl}/api-signup`, formData, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -10,9 +10,9 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const test=()=>{
-    navigate('/')
-  }
+  const test = () => {
+    navigate("/");
+  };
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -27,7 +27,7 @@ const Login = () => {
         toast.error("baseUrl is not defined");
         return;
       }
-      const response = await axios.post(`${baseUrl}/login`, loginData);
+      const response = await axios.post(`${baseUrl}/api-login`, loginData);
       toast.success("Login successfully");
       loginSuccessful = true;
       console.log("success");
@@ -98,7 +98,10 @@ const Login = () => {
                 <input type="checkbox" />
                 <label htmlFor="remember me">Remember Me</label>
               </div>
-              <button type="submit" className="w-[100%] py-3 rounded-xl text-[20px] text-white bg-[#635bff]  hover:bg-[#363192] ">
+              <button
+                type="submit"
+                className="w-[100%] py-3 rounded-xl text-[20px] text-white bg-[#635bff]  hover:bg-[#363192] "
+              >
                 Sign In
               </button>
             </form>
