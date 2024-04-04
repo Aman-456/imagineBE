@@ -1,0 +1,207 @@
+body{
+  background: #0c0b0d;
+}
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: "8px";
+}
+
+/* CSS */
+.button-63 {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-63 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+/* CSS */
+.button-22 {
+  align-items: center;
+  appearance: button;
+  background-color: #0276ff;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue", sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
+    opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+.button-22:active {
+  background-color: #006ae8;
+}
+
+.button-22:hover {
+  background-color: #1c84ff;
+}
+
+.borders {
+  border-left: 1px solid #373838;
+  height: 50px;
+}
+.icon-border {
+  position: relative; /* Needed for absolute positioning of pseudo-element */
+}
+
+.icon-border::before {
+  content: ""; /* Create pseudo-element */
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Initially start from the left */
+  width: 0; /* Initially no width */
+  height: 3px; /* Border height */
+  background-color: #635bff; /* Color of the border */
+  transition: width 0.3s ease; /* Transition width */
+}
+
+.icon-border:hover::before {
+  width: 100%; /* Expand to full width on hover */
+}
+
+.custom {
+  outline: none;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::before {
+  content: ""; /* Create pseudo-element */
+  position: absolute;
+  bottom: -14px;
+  left: 0; /* Initially start from the left */
+  width: 0; /* Initially no width */
+  height: 3px; /* Border height */
+  background-color: #635bff; /* Color of the border */
+  transition: width 0.3s ease; /* Transition width */
+}
+
+.nav-item:hover::before {
+  width: 100%; /* Expand to full width on hover */
+}
+
+
+
+/* add custom hover stylin on home post componet box  */
+.custom-title-box {
+  opacity: 0;
+  transition: all 0.5s ease;
+  bottom: -2rem;
+  padding-bottom: 1rem;
+}
+
+.custom-post-box:hover .custom-title-box {
+  opacity: 1;
+  bottom: 0;
+}
+.custom-post-box:hover  .image-scale {
+  transform: scale(1.1); 
+}
+
+
+                        /***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #bbbdc5;
+  height: 0.4rem;
+  border-radius: 5px;
+
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+  background: #ced0d9;
+  height: 0.4rem;
+}
+
+/***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb {
+   /* Centers thumb on the track */
+  background-color: #91949f;    
+  -webkit-appearance: none;
+  height: 1.2rem;
+  width: 2rem; 
+  margin-top: -6px;
+  border-radius: 10px;
+}
+input[type="range"]{
+  -webkit-appearance: none;
+  border-radius: 10px;
+}
+
+
+.scrollable-div {
+  /* Set height as needed */
+  overflow-y: auto; /* Enable vertical scrollbar */
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  /* Hide scrollbar for WebKit/Blink */
+  -ms-overflow-style: none;
+  
+}
+
+/* Hide scrollbar for WebKit/Blink */
+.scrollable-div::-webkit-scrollbar {
+  display: none;
+}
+
+
+.custom-detail-image{
+  display: none;
+  transition: all 1s ease;
+}
+.custom-detail-box:hover .custom-detail-image{
+  display: block;
+  
+}
