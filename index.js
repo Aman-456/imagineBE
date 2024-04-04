@@ -1,8 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
+require("dotenv").config();
 const collection = require("./models/user.model");
 const cors = require("cors");
-const bcrypt=require("bcrypt")
+const bcrypt = require("bcrypt");
+const path = require("path");
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(
     origin: true,
   })
 );
-const port = 4000;
+const port = process.env.PORT || 4000;
 app.listen(port, (req, res) => {
   console.log(`app listening at ${port}`);
 });
@@ -29,14 +30,16 @@ app.post("/signup", async (req, res) => {
 
     // Check if user already exists
     const existingUser = await collection.findOne({ username: data.username });
-    const excitingEmail= await collection.findOne({email:data.email})
+    const excitingEmail = await collection.findOne({ email: data.email });
     if (existingUser) {
       return res
         .status(400)
         .json({ message: "User already exists. Please try another name" });
     }
-    if(excitingEmail){
-      return res.status(400).json({message:"email address exists. Please try another address"})
+    if (excitingEmail) {
+      return res
+        .status(400)
+        .json({ message: "email address exists. Please try another address" });
     }
 
     const userData = await collection.create(data);
@@ -68,9 +71,19 @@ app.post("/login", async (req, res) => {
     }
 
     // If user exists and password is correct, return success
-    return res.status(200).json({ message: "Login successful", userData: user });
+    return res
+      .status(200)
+      .json({ message: "Login successful", userData: user });
   } catch (error) {
     console.error("Error during login:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
+});
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "./client/dist")));
+
+// this send back React's build's index.html file.
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
 });
