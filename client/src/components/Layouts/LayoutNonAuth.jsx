@@ -6,8 +6,7 @@ export const LayoutNonAuth = () => {
   const profile = useSelector((state) => state.profile);
   const navigate = useNavigate();
   useLayoutEffect(() => {
-    console.log(profile);
-    if (profile?.email) {
+     if (profile?.email) {
       navigate("/");
     }
   }, [profile]);

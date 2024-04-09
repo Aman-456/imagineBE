@@ -14,8 +14,12 @@ import { FaMoon } from "react-icons/fa6";
 import Tags from "./Tags";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setProfile } from "../../store/profileSlice";
 
 const Sidebar = ({ show, setShow, setIsOpen, isOpen }) => {
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile);
   const [showIcons, setShowIcons] = useState(true);
   Sidebar.propTypes = {
     show: PropTypes.bool.isRequired,
@@ -42,8 +46,7 @@ const Sidebar = ({ show, setShow, setIsOpen, isOpen }) => {
       setIsOpen(false);
     }
   };
-  console.log(show);
-  return (
+   return (
     <>
       <div className="fixed h-full">
         <div
@@ -107,7 +110,22 @@ const Sidebar = ({ show, setShow, setIsOpen, isOpen }) => {
             </div>
             <div className="flex flex-col gap-4 ">
               <div className="bg-[#151419] p-3 flex items-center justify-center  mx-4 rounded-full">
-                <Link to="/login">
+                <Link
+                  to="/login"
+                  replace={true}
+                  onClick={() => {
+                    if (profile?.email) {
+                      dispatch(
+                        setProfile({
+                          email: null,
+                          username: null,
+                          token: null,
+                          _id: null,
+                        })
+                      );
+                    }
+                  }}
+                >
                   <FaUser />
                 </Link>
               </div>

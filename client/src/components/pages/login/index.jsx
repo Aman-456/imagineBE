@@ -90,7 +90,7 @@ const Login = () => {
         </button>
       </form>
       <div className="pt-10">
-        <Link to="/signup">
+        <Link to="/signup" replace={true}>
           <button className="w-[100%] py-3 rounded-xl text-[20px] text-white bg-[#19171d]  hover:bg-[#131216] ">
             Register
           </button>
