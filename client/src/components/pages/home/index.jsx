@@ -22,25 +22,25 @@ const Home = () => {
   };
 
   // Map range values to flex widths
+  // Map range values to flex widths considering gap
   const rangeToFlexMap = {
-    1: 45,
-    2: 32,
-    3: 24,
-    4: 19,
-    5: 15,
-    6: 14,
-    7: 13,
-    8: 12,
-    9: 11,
+    1: "99",
+    2: "calc(50% - 0.8rem)",
+    3: "calc(33.33% - 0.8rem)",
+    4: "calc(25% - 0.8rem)",
+    5: "calc(20% - 0.8rem)",
+    6: "calc(16.67% - 0.8rem)",
+    7: "calc(14.28% - 0.8rem)",
+    8: "calc(12.5% - 0.8rem)",
   };
 
   const handleRangeChange = (value) => {
-    setFlexValue(rangeToFlexMap[value] || 19); // Default to 19 if value not found
+    setFlexValue(rangeToFlexMap[value] || 2); // Default to 19 if value not found
   };
 
   return (
     <>
-      <div className="text-white pb-12  bg-[#0c0b0d] ">
+      <div className="text-white pb-12">
         <Search />
         <div className="">
           <FilterButton

@@ -6,7 +6,7 @@ const SideNav = () => {
   const [show, setShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="w-[6%] bg-[#030303]   h-screen fixed">
+    <div className="w-[12%] xl:w-[6%] bg-[#030303]   h-screen fixed">
       <Sidebar
         show={show}
         isOpen={isOpen}

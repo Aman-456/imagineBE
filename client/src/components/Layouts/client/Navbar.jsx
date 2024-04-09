@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className="w-[94%] flex justify-between ml-auto">
+      <div className="w-[96%] flex justify-between ml-auto">
         <div className="mt-2">
           <img src={darklogo} width={60} height={60} alt="logo" />
         </div>
