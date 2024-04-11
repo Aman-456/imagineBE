@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export default function withAuth(Component) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const profile = useSelector((state) => state.profile);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
       if (!profile?.email) {
         navigate("/login");
         setIsAuthenticated(false);
