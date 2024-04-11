@@ -39,7 +39,7 @@ const App = () => {
               <Route path="/:category/:id/:title" element={<Post />} />
               <Route path="/user/:username" element={<UserProfile />} />
             </Route>
-            <Route element={<LayoutNonAuth />}>
+            <Route path="/" element={<LayoutNonAuth />}>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUp />} />
             </Route>
