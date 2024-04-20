@@ -11,6 +11,9 @@ const UserProfile = () => {
   
   const [posts,setPosts]=useState(singleUserData);
   const [flexValue, setFlexValue] = useState(19);
+  const [showwallCategory,setShowWallCategory]=useState(false)
+  const [showAllCategories,setShowAllCategories]=useState(true)
+  const [showRange,setShowRange]=useState(true)
   const [activeCategory,setActiveCategory]=useState('All Posts')
   const categories=singleUserData.map(item=>item.category)
   // const uniqureCategories=["Recent",...new Set(categories)]
@@ -25,6 +28,17 @@ const UserProfile = () => {
   }
  useEffect(()=>{
 setFlexValue(19);
+
+if(activeCategory === "Wall"){
+  setShowAllCategories(false)
+  setShowWallCategory(true)
+  setShowRange(false)
+} else{
+  setShowAllCategories(true)
+  setShowWallCategory(false)
+  setShowRange(true)
+}
+
  },[activeCategory]);
 
   // Map range values to flex widths
@@ -78,9 +92,22 @@ setFlexValue(19);
             </div>
 
         </div>
+
+        <FilterButton activeCategory={activeCategory} setActiveCategory={setActiveCategory} categories={uniqureCategories} onFilterPosts={filterPostHandler}   onRangeChange={handleRangeChange}
+        showRange={showRange}
+        />
         
-        <FilterButton activeCategory={activeCategory} setActiveCategory={setActiveCategory} categories={uniqureCategories} onFilterPosts={filterPostHandler} onRangeChange={handleRangeChange} />
-        <Posts posts={posts}  flexValue={flexValue} />
+     
+        
+        {showAllCategories && 
+          <Posts posts={posts}  flexValue={flexValue} />
+      }
+        {showwallCategory && (
+          <div className="mx-auto w-[80%]  mt-16 mb-40">
+             <textarea type="text" className='w-full bg-black rounded-2xl mt-2 text-white px-2 py-2 border-2 border-gray-600 outline-2 outline-blue-600' rows={6}/>
+            <button className='bg-[#635bff] mt-2 px-16 font-semibold rounded-2xl py-3'>Add Wall Post</button>
+          </div>
+        )}
        
       </div>
     </>

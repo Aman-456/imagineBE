@@ -18,7 +18,7 @@ import { MdFacebook } from "react-icons/md";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import CopyTextButton from './CopyTextButton';
-import { homeData, reactionData, exploreData,hotData } from '../../common/commonData';
+import { homeData, reactionData, exploreData,hotData,tagData,singleUserData } from '../../common/commonData';
 
 const Post = () => {
     const {category,id,title}=useParams()
@@ -55,6 +55,12 @@ const Post = () => {
             return exploreData;
             case 'Hot Post':
                 return hotData;
+        case 'Jungle':
+        case 'Bike':
+        case 'Bycycle':
+            return tagData;
+            case 'All Posts':
+            return singleUserData;
         default:
             return [];
     }
@@ -122,6 +128,7 @@ const Post = () => {
 
   return (
     <div className='min-h-screen'>
+       
 
         {/* first image box  */}
         <div className=' mx-auto ml-8 mt-8 text-white'>
@@ -135,7 +142,7 @@ const Post = () => {
             </div>
         </div>
 
-        {/* second title bo x */}
+        {/* second title box */}
         <div className='bg-[#2c2c31] pt-8 mx-auto mt-4 rounded-2xl w-4/6 '>
             <div className='px-4 space-x-3 text-[#646373] font-semibold'>
                 <span className='bg-[#353539] px-4 py-2 rounded-2xl'>bicycle</span>

@@ -14,28 +14,28 @@ export const homeData=[
     category:"Hot!",
     title:"also can upload vedio",
     image:Card1,
-    username:"imagen_u"
+    username:"ali"
 },
 {
     id:3,
     category:"Most Votes",
     title:"Today News About function",
     image:Card1,
-    username:"imagen_u"
+    username:"hamza"
 },
 {
     id:4,
     category:"Most Comments",
     title:"Testing Image",
     image:Card1,
-    username:"imagen_u"
+    username:"zoya"
 },
 {
     id:5,
     category:"Most views",
     title:"Hunatated Spot",
     image:Card1,
-    username:"imagen_u"
+    username:"tayyaba"
 },
 {
     id:6,
@@ -49,14 +49,14 @@ export const homeData=[
     category:"Recent",
     title:"Hunatated Spot 7",
     image:Card1,
-    username:"imagen_u"
+    username:"anis"
 },
 {
     id:8,
     category:"Recent",
     title:"Hunatated Spot 8",
     image:Card1,
-    username:"imagen_u"
+    username:"sidra"
 },
 {
     id:9,
@@ -84,7 +84,7 @@ export const homeData=[
     category:"Recent",
     title:"Hunatated Spot 12",
     image:Card1,
-    username:"imagen_u"
+    username:"tayyab"
 },
 ];
 
@@ -98,7 +98,7 @@ export const reactionData=[
 {
     id:2,
     category:"Love",
-    username:"imagen_u"
+    username:"hamza"
     
 },
 {
@@ -157,7 +157,7 @@ export const exploreData=[
     category:"Video",
     title:"Lady in Jungle",
     image:Card1,
-    username:"imagen_u"
+    username:"ali"
     
 },
 {
@@ -201,7 +201,7 @@ export const exploreData=[
     category:"Music",
     title:"Lady in Jungle",
     image:Card2,
-    username:"imagen_u"
+    username:"zoya"
 },
 {
     id:8,
@@ -216,7 +216,7 @@ export const exploreData=[
     category:"Video",
     title:"Lady in Jungle",
     image:Card2,
-    username:"imagen_u"
+    username:"hamid"
     
 },
 {
@@ -317,7 +317,7 @@ export const singleUserData=[
         id:2,
         category:"User imagen-u",
         title:"Lady in Jungle",
-        username:"imagen_u"
+        username:"anees"
         
     },
     {
@@ -325,7 +325,7 @@ export const singleUserData=[
         category:"Wall",
         title:"Lady in Jungle",
         image:Card1,
-        username:"imagen_u"
+        username:"tayyab"
         
     },
     {
@@ -333,7 +333,7 @@ export const singleUserData=[
         category:"Followers",
         title:"Lady in Jungle",
        
-        username:"imagen_u"
+        username:"ali"
         
     },
     {
@@ -341,7 +341,7 @@ export const singleUserData=[
         category:"Following",
         title:"Lady in Jungle",
         
-        username:"imagen_u"
+        username:"hamza"
         
     },
     {
@@ -349,7 +349,7 @@ export const singleUserData=[
         category:"All Posts",
         title:"Lady in Jungle",
         image:Card2,
-        username:"imagen_u"
+        username:"umer"
         
     },
     {
@@ -357,7 +357,7 @@ export const singleUserData=[
         category:"All Posts",
         title:"Lady in Jungle",
         image:Card1,
-        username:"imagen_u"
+        username:"sidra"
         
     },
     {
@@ -365,7 +365,58 @@ export const singleUserData=[
         category:"All Posts",
         title:"Lady in Jungle",
         image:Card1,
-        username:"imagen_u"
+        username:"noor"
         
     },
+];
+
+export const tagData=[
+    {
+    id:1,
+    title:"Who will win today match",
+    image:Card1,
+    username:"imagen",
+    category:"Jungle",
+},
+{
+    id:2,
+  
+    title:"also can upload vedio",
+    image:Card1,
+    username:"imagen_u",
+    category:"Bike",
+},
+{
+    id:3,
+  
+    title:"Today News About function",
+    image:Card1,
+    username:"imagen_u",
+    category:"Bycycle",
+},
+
+
+];
+export const subscriptionData=[
+    {
+        id:1,
+        category:"Following users",
+        title:"Lady in Jungle",
+        username:"noor" 
+    },
+    {
+        id:2,
+        category:"Categories",
+        title:"Lady in Jungle",
+        username:"noor" 
+    },
+    {
+        id:3,
+        category:"Tags",
+        title:"Lady in Jungle",
+        username:"noor" 
+    },
 ]
+
+
+

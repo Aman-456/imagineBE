@@ -15,7 +15,7 @@ import Tags from "./Tags";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ show, setShow,setIsOpen,isOpen }) => {
+const Sidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShowHamburgerTags }) => {
   const [showIcons, setShowIcons] = useState(true);
   Sidebar.propTypes = {
     show: PropTypes.bool.isRequired,
@@ -23,6 +23,7 @@ const Sidebar = ({ show, setShow,setIsOpen,isOpen }) => {
   };
   const toggleIcons = () => {
     setShowIcons(!showIcons);
+    setShowHamburgerTags(!showHamburgerTags)
     handleHamburgerMenu()
   };
 
@@ -42,14 +43,14 @@ const Sidebar = ({ show, setShow,setIsOpen,isOpen }) => {
       setIsOpen(false);
     }
   };
-  console.log(show);
+  
   return (
     <>
-      <div className="fixed h-full" >
-        <div className="h-full py-3  " onMouseEnter={() => setShow(true)} onMouseLeave={handleMouseleave}>
+      <div className="fixed h-full " >
+        <div className="h-full py-3  z-20 bg-black" onMouseEnter={() => setShow(true)} onMouseLeave={handleMouseleave}>
           <div className="text-white   h-full  flex flex-col justify-between items-center" >
             
-           <div className="">
+           <div className="cursor-pointer">
            {showIcons ? (
               <div className="py-2  px-6 " onClick={toggleIcons}>
                 <FaGripLines fontSize="24px" />
@@ -123,7 +124,10 @@ const Sidebar = ({ show, setShow,setIsOpen,isOpen }) => {
         
           
         </div>
+        z
       </div>
+     
+      
     </>
   );
 };

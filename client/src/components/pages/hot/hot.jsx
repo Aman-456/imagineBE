@@ -24,7 +24,7 @@ const Hot = () => {
         setFlexValue(rangeToFlexMap[value] || 19); // Default to 19 if value not found
       };
   return (
-    <div className=' text-white pb-12 '>
+    <div className=' text-white pb-12 min-h-screen'>
       <div className='mt-10'><h1 className=' text-4xl font- text-center'>Hot Posts</h1></div>
       <div className=''>
       <FilterButton onRangeChange={handleRangeChange}/>
