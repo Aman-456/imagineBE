@@ -320,6 +320,7 @@ export const singleUserData=[
         username:"anees"
         
     },
+    
     {
         id:3,
         category:"Wall",
@@ -362,6 +363,78 @@ export const singleUserData=[
     },
     {
         id:8,
+        category:"All Posts",
+        title:"Lady in Jungle",
+        image:Card1,
+        username:"noor"
+        
+    },
+];
+export const adminsingleUserData=[
+    {
+        id:1,
+        category:"All Posts",
+        title:"Lady in Jungle",
+        image:Card1,
+        username:"imagen_u"
+        
+    },
+    {
+        id:2,
+        category:"User imagen_u",
+        title:"Lady in Jungle",
+        username:"anees"
+        
+    },
+    {
+        id:3,
+        category:"My details",
+        title:"Lady in Jungle",
+        username:"anees"
+        
+    },
+    
+    {
+        id:4,
+        category:"My Favorites",
+        title:"Lady in Jungle",
+       
+        username:"tayyab"
+        
+    },
+    {
+        id:5,
+        category:"Private Messages",
+        title:"Lady in Jungle",
+       
+        username:"ali"
+        
+    },
+    {
+        id:6,
+        category:"Wall",
+        title:"Lady in Jungle",       
+        username:"hamza"
+        
+    },
+    {
+        id:7,
+        category:"Followers",
+        title:"Lady in Jungle",
+        
+        username:"umer"
+        
+    },
+    {
+        id:8,
+        category:"Following",
+        title:"Lady in Jungle",
+       
+        username:"sidra"
+        
+    },
+    {
+        id:9,
         category:"All Posts",
         title:"Lady in Jungle",
         image:Card1,

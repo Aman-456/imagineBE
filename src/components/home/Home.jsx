@@ -9,6 +9,7 @@ const Home = () => {
   const [posts,setPosts]=useState(homeData);
   const [flexValue, setFlexValue] = useState(19);
   const [activeCategory,setActiveCategory]=useState('Recent')
+  const [showRange,setShowRange]=useState(true)
   const categories=homeData.map(item=>item.category)
 
   // const uniqureCategories=["Recent",...new Set(categories)]
@@ -46,8 +47,8 @@ const Home = () => {
       <div className="text-white pb-12  bg-[#0c0b0d] ">
         <Search />
         <div className="">
-        <FilterButton categories={uniqureCategories} onFilterPosts={filterPostHandler} onRangeChange={handleRangeChange} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
-        <Posts posts={posts}  flexValue={flexValue}/>
+        <FilterButton categories={uniqureCategories} onFilterPosts={filterPostHandler} onRangeChange={handleRangeChange} activeCategory={activeCategory} setActiveCategory={setActiveCategory} showRange={showRange}/>
+        <Posts posts={posts}  flexValue={flexValue} />
 
         </div>
      

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaGripLines } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { IoHomeSharp } from "react-icons/io5";
@@ -16,21 +16,47 @@ import AdminTags from "./AdminTags";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const AdminSidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShowHamburgerTags }) => {
+const AdminSidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShowHamburgerTags ,showUserProfile,setShowUserProfile}) => {
   const [showIcons, setShowIcons] = useState(true);
   AdminSidebar.propTypes = {
     show: PropTypes.bool.isRequired,
     setShow: PropTypes.func.isRequired,
   };
+
+  useEffect(() => {
+    
+     if (!showHamburgerTags) {
+      setShowIcons(true); // If showHamburgerTags is false, set showIcons to true
+    }
+   
+    
+    else {
+      setShowIcons(false); // If showHamburgerTags is true, set showIcons to false
+    }
+    
+  }, [showHamburgerTags]);
+  useEffect(() => {
+    if (showUserProfile) {
+      setShowIcons(false);
+    }
+    else {
+      setShowIcons(true)
+    }
+  }, [showUserProfile]);
+  
   const toggleIcons = () => {
     setShowIcons(!showIcons);
     setShowHamburgerTags(!showHamburgerTags)
-    handleHamburgerMenu()
+    handleHamburgerMenu() 
+  };
+  const toggleIconsCross = () => {
+    setShowIcons(true);
+    setShowHamburgerTags(false)
+    handleHamburgerMenu() 
+    setShowUserProfile(false)
   };
 
-  const toggleTags = () => {
-    setShow(!show);
-  };
+  
   const handleMouseleave = () => {
     setTimeout(() => {
       setShow(false)
@@ -44,6 +70,9 @@ const AdminSidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShow
       setIsOpen(false);
     }
   };
+  const handleUserProfile=()=>{
+    setShowUserProfile(!showUserProfile)
+  }
   
   return (
     <>
@@ -57,51 +86,51 @@ const AdminSidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShow
                 <FaGripLines fontSize="24px" />
               </div>
             ) : (
-              <div className="py-2 px-6 " onClick={toggleIcons}>
+              <div className="py-2 px-6 " onClick={toggleIconsCross}>
                 <RxCross1 fontSize="24px" />
               </div>
             )}
            </div>
-            <div className="flex gap-20 ">
+            <div className="flex gap-20">
               <div className="icons flex flex-col justify-between">
                 <div className="flex flex-col gap-5 px-6 ">
-                  <div>
-                    <Link to={'/submitai'} className="icon-border py-2 ">
+                  <div className="icon-border py-2">
+                    <Link to={'/submitai'} className="">
                       <IoHomeSharp fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/hot'} className="icon-border py-2">
+                  <div className="icon-border py-2">
+                    <Link to={'/hot'} className="">
                       <FaFireFlameSimple fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/news'} className="icon-border py-2" >
+                  <div className="icon-border py-2">
+                    <Link to={'/news'}  >
                       <FaNewspaper fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/videos'} className="icon-border py-2" >
+                  <div className="icon-border py-2">
+                    <Link to={'/videos'} >
                       <FaVideo fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/submitimage'} className="icon-border py-2" >
+                  <div className="icon-border py-2">
+                    <Link to={'/submitimage'}  >
                       <FaImage fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/tags'} className="icon-border py-2" >
+                  <div className="icon-border py-2">
+                    <Link to={'/tags'} >
                       <FaHashtag fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/users'} className="icon-border py-2" >
+                  <div className="icon-border py-2">
+                    <Link to={'/users'}  >
                       <FaUsers fontSize="20px" />
                     </Link>
                   </div>
-                  <div>
-                    <Link to={'/admin/general'} className="icon-border py-2" >
+                  <div className="icon-border py-2">
+                    <Link to={'/admin/general'}>
                       <IoSettingsSharp fontSize="20px" />
                     </Link>
                   </div>
@@ -111,8 +140,8 @@ const AdminSidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShow
               </div>
             </div>
              <div className="flex flex-col gap-4 ">
-                  <div className="bg-white p-3 flex items-center justify-center  mx-4 rounded-full">
-                    <Link to="/login">
+                  <div className="bg-white p-3 flex items-center justify-center  mx-4 rounded-full cursor-pointer" onClick={handleUserProfile}>
+                    <Link  >
                       <FaUser />
                     </Link>
                   </div>

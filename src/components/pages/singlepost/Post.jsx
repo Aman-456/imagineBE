@@ -18,7 +18,7 @@ import { MdFacebook } from "react-icons/md";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import CopyTextButton from './CopyTextButton';
-import { homeData, reactionData, exploreData,hotData,tagData,singleUserData } from '../../common/commonData';
+import { homeData, reactionData, exploreData,hotData,tagData,singleUserData,adminsingleUserData } from '../../common/commonData';
 
 const Post = () => {
     const {category,id,title}=useParams()
@@ -168,7 +168,7 @@ const Post = () => {
 
         <div className='pt-8 mx-auto mt-4 rounded-2xl w-4/6 flex justify-center items-center gap-4 '>
             {prevPost &&(
-                <Link to={`/${prevPost.id}/${prevtitleInUrl}`}   className='bg-[#2c2c31] w-full rounded-2xl h-40 overflow-hidden relative custom-detail-box'>
+                <Link to={`/${nextPost.category}/${prevPost.id}/${prevtitleInUrl}`}   className='bg-[#2c2c31] w-full rounded-2xl h-40 overflow-hidden relative custom-detail-box'>
                 <img src={prevPost.image} alt="" className='w-full h-full custom-detail-image '/>
                 <div className='absolute left-0 text-white bottom-0 flex items-center gap-2 px-4 pb-4 text-3xl justify-start  w-full'>
     <div className='text-2xl  h-20 items-center justify-center flex'><FaLessThan /></div>
@@ -177,7 +177,7 @@ const Post = () => {
             </Link>
             )}
             {nextPost &&(
-                <Link  to={`/${nextPost.id}/${nexttitleInUrl}`} className='bg-[#2c2c31] w-full rounded-2xl h-40 overflow-hidden relative custom-detail-box'>
+                <Link  to={`/${nextPost.category}/${nextPost.id}/${nexttitleInUrl}`} className='bg-[#2c2c31] w-full rounded-2xl h-40 overflow-hidden relative custom-detail-box'>
                 <img src={nextPost.image} alt="" className='w-full h-full custom-detail-image'/>
                 <div className='absolute left-0 text-white bottom-0 flex items-center gap-2 px-4 pb-4 text-3xl justify-end  w-full'>
   <div className=''><h1>{nextPost.title} </h1></div>

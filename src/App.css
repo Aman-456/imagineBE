@@ -89,7 +89,8 @@ body{
   height: 50px;
 }
 .icon-border {
-  position: relative; /* Needed for absolute positioning of pseudo-element */
+  position: relative;
+ 
 }
 
 .icon-border::before {

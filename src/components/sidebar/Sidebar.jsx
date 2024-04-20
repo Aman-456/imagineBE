@@ -15,7 +15,7 @@ import Tags from "./Tags";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShowHamburgerTags }) => {
+const Sidebar = ({toggleAdminMode, show, setShow,setIsOpen,isOpen,showHamburgerTags,setShowHamburgerTags }) => {
   const [showIcons, setShowIcons] = useState(true);
   Sidebar.propTypes = {
     show: PropTypes.bool.isRequired,
@@ -106,7 +106,7 @@ const Sidebar = ({ show, setShow,setIsOpen,isOpen,showHamburgerTags,setShowHambu
             </div>
              <div className="flex flex-col gap-4 ">
                   <div className="bg-[#151419] p-3 flex items-center justify-center  mx-4 rounded-full">
-                    <Link to="/login">
+                    <Link  onClick={toggleAdminMode}>
                       <FaUser />
                     </Link>
                   </div>
