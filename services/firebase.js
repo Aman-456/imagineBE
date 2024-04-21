@@ -65,7 +65,9 @@ class FirestoreProvider {
     const document = await documentRef.get();
     if (!document.exists) return null;
     const entity = document.data();
-    entity.id = document.id;
+    entity.id = doc.id;
+    entity.createAt = doc.createTime;
+    entity.updatedAt = doc.updateTime;
     return entity;
   }
 
@@ -89,6 +91,8 @@ class FirestoreProvider {
     return querySnapshot.docs.map((doc) => {
       const entity = doc.data();
       entity.id = doc.id;
+      entity.createAt = doc.createTime;
+      entity.updatedAt = doc.updateTime;
       return entity;
     });
   }
@@ -108,6 +112,8 @@ class FirestoreProvider {
     return querySnapshot.docs.map((doc) => {
       const entity = doc.data();
       entity.id = doc.id;
+      entity.createAt = doc.createTime;
+      entity.updatedAt = doc.updateTime;
       return entity;
     });
   }

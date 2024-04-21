@@ -125,3 +125,78 @@ exports.authenticateUser = async (req, res) => {
     });
   }
 };
+
+// createpost
+// {
+//     id:9,
+//     category:"Video",
+//     title:"Lady in Jungle",
+//     image:Card2,
+//     username:"hamid"
+
+// },
+exports.createpost = async (req, res) => {
+  try {
+    const { category, title, description = "" } = req.body;
+
+    if (!title || !category || !req.file) {
+      return res
+        .status(400)
+        .json({ error: "category title and file is required" });
+    }
+
+    const userExists = await firebaseService.get(req.authId, "users");
+
+    let avatarUrl = null;
+    if (req.file) {
+      console.log(req.file);
+      avatarUrl = await uploadBufferToStorage(req.file.buffer, "posts");
+    }
+    await firebaseService.addDoc({
+      data: {
+        category,
+        title,
+        file: avatarUrl,
+        description,
+        username: userExists.username,
+        userId: req.authId,
+      },
+      collection: "posts",
+    });
+    return res.status(201).json({ message: "post created successfully." });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({
+      message: "An error occurred while creating the post.",
+      error: error.message,
+    });
+  }
+};
+exports.getMyPosts = async (req, res) => {
+  try {
+    const data = await firebaseService.whereEqualTo(
+      "userId",
+      req.authId,
+      "posts"
+    );
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({
+      message: "An error occurred while fetching the post.",
+      error: error.message,
+    });
+  }
+};
+exports.getPosts = async (req, res) => {
+  try {
+    const data = await firebaseService.getAll("posts");
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({
+      message: "An error occurred while fetching the post.",
+      error: error.message,
+    });
+  }
+};

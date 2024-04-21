@@ -8,6 +8,9 @@ const {
   getUser,
   updateUser,
   authenticateUser,
+  createpost,
+  getMyPosts,
+  getPosts,
 } = require("../controllers/users");
 const { checkIfAuthenticated } = require("../middlewares/authfirebase");
 
@@ -15,6 +18,14 @@ const { checkIfAuthenticated } = require("../middlewares/authfirebase");
 router.post("/signup", upload.single("avatar"), signup);
 router.post("/signin", authenticateUser);
 router.get("/getuser", checkIfAuthenticated, getUser);
+router.post(
+  "/createpost",
+  checkIfAuthenticated,
+  upload.single("file"),
+  createpost
+);
+router.get("/getPosts", checkIfAuthenticated, getPosts);
+router.get("/getMyPosts", checkIfAuthenticated, getMyPosts);
 router.post(
   "/updateUser",
   checkIfAuthenticated,
