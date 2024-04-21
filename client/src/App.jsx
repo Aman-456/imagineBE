@@ -1,22 +1,11 @@
-import React, { useState } from 'react'
-import AdminApp from './AdminApp';
-import UserApp from './UserApp';
+import React, { useState } from "react";
+import AdminApp from "./AdminApp";
+import UserApp from "./UserApp";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const [isAdminMode, setIsAdminMode] = useState(false);
+  const user = useSelector((state) => state.profile.profile);
+  return <div>{user?.isAdmin ? <AdminApp /> : <UserApp />}</div>;
+};
 
-  const toggleAdminMode = () => {
-    setIsAdminMode(!isAdminMode);
-  };
-  return (
-    <div>
-       {isAdminMode ? (
-          <AdminApp  toggleAdminMode={toggleAdminMode}/>
-        ) : (
-          <UserApp toggleAdminMode={toggleAdminMode} />
-        )}
-    </div>
-  )
-}
-
-export default App
+export default App;

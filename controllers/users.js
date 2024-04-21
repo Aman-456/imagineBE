@@ -7,7 +7,7 @@ const { v4: uuidv4, version } = require("uuid");
 const crypto = require("crypto"); // Already included in Node.js
 const https = require("https");
 // creating account
-exports.createUser = async (req, res) => {
+exports.signup = async (req, res) => {
   try {
     const { email, password, username } = req.body;
 
@@ -107,6 +107,20 @@ exports.updateUser = async (req, res) => {
     console.error(error.message);
     res.status(500).json({
       message: "An error occurred while updating the user.",
+      error: error.message,
+    });
+  }
+};
+exports.authenticateUser = async (req, res) => {
+  try {
+    const { idToken } = req.body;
+    const userRecord = await firebaseService.verifyIdToken(idToken);
+    const user = await firebaseService.get(userRecord.uid, "users");
+    return res.status(200).json({ ...user, idToken });
+  } catch (error) {
+    console.error(error.message, "here");
+    res.status(500).json({
+      message: "An error occurred while authenticating the user.",
       error: error.message,
     });
   }

@@ -9,7 +9,7 @@ import HomePage from "./components/pages/home";
 import LoginPage from "./components/pages/login";
 import SignUp from "./components/pages/signup";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Shorts from "./components/pages/shorts/shorts";
 import Reactions from "./components/pages/reactions/reactions";
 import Hot from "./components/pages/hot/hot";
@@ -28,9 +28,9 @@ import TopUsers from "./components/pages/topusers/TopUsers";
 // import AdminNavbar from "./components/layout/AdminNavbar";
 // import Admin from "./components/pages/admindashboard";
 
-import AdminSidebar from './components/adminComponents/adminsidebar/AdminSidebar'
-import AdminTags from './components/adminComponents/adminsidebar/AdminTags'
-import AdminHamburgerTabs from './components/adminComponents/adminsidebar/AdminHamburgerTabs'
+import AdminSidebar from "./components/adminComponents/adminsidebar/AdminSidebar";
+import AdminTags from "./components/adminComponents/adminsidebar/AdminTags";
+import AdminHamburgerTabs from "./components/adminComponents/adminsidebar/AdminHamburgerTabs";
 import AdminNavbar from "./components/adminComponents/adminsidebar/AdminNavbar";
 import Subscriptions from "./components/pages/subscriptions/Subscriptions";
 import AdminSubmitai from "./components/adminComponents/adminsidebar/adminhome/AdminSubmitai";
@@ -54,26 +54,25 @@ import AdminPoints from "./components/adminComponents/adminsidebar/adminsettings
 import AdminSpam from "./components/adminComponents/adminsidebar/adminsettings/AdminSpam";
 import AdminStats from "./components/adminComponents/adminsidebar/adminsettings/AdminStats";
 import AdminMailing from "./components/adminComponents/adminsidebar/adminsettings/AdminMailing";
-import AdminWidgets from "./components/adminComponents/adminsidebar/adminsettings/AdminWidgets";
-import AdminCategories from "./components/adminComponents/adminsidebar/adminsettings/AdminCategories";
-import AdminMenu from "./components/adminComponents/adminsidebar/adminsettings/AdminMenu";
-import AdminManage from "./components/adminComponents/adminsidebar/adminsettings/AdminManage";
-import AdminPlugins from "./components/adminComponents/adminsidebar/adminsettings/AdminPlugins";
-import AdminModerate from "./components/adminComponents/adminsidebar/adminsettings/AdminModerate";
-import AdminFlagged from "./components/adminComponents/adminsidebar/adminsettings/AdminFlagged";
-import AdminHidden from "./components/adminComponents/adminsidebar/adminsettings/AdminHidden";
-import UserProfileTags from "./components/adminComponents/adminsidebar/UserProfileTags";
-import AdminUserProfile from "./components/pages/singlepost/AdminUserProfile";
-import AdminUserDetailProfile from "./components/pages/singlepost/AdminUserDetailProfile";
-import Messages from "./components/pages/singlepost/Messages";
-import Membership from "./components/adminComponents/adminsidebar/Membership";
+// import AdminWidgets from "./components/adminComponents/adminsidebar/adminsettings/AdminWidgets";
+// import AdminCategories from "./components/adminComponents/adminsidebar/adminsettings/AdminCategories";
+// import AdminMenu from "./components/adminComponents/adminsidebar/adminsettings/AdminMenu";
+// import AdminManage from "./components/adminComponents/adminsidebar/adminsettings/AdminManage";
+// import AdminPlugins from "./components/adminComponents/adminsidebar/adminsettings/AdminPlugins";
+// import AdminModerate from "./components/adminComponents/adminsidebar/adminsettings/AdminModerate";
+// import AdminFlagged from "./components/adminComponents/adminsidebar/adminsettings/AdminFlagged";
+// import AdminHidden from "./components/adminComponents/adminsidebar/adminsettings/AdminHidden";
+// import UserProfileTags from "./components/adminComponents/adminsidebar/UserProfileTags";
+// import AdminUserProfile from "./components/pages/singlepost/AdminUserProfile";
+// import AdminUserDetailProfile from "./components/pages/singlepost/AdminUserDetailProfile";
+// import Messages from "./components/pages/singlepost/Messages";
+// import Membership from "./components/adminComponents/adminsidebar/Membership";
 
-
-const UserApp = ({toggleAdminMode}) => {
+const UserApp = ({ toggleAdminMode }) => {
   const [show, setShow] = useState(false);
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [showHamburgerTags,setShowHamburgerTags]=useState(false)
+  const [showHamburgerTags, setShowHamburgerTags] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -95,14 +94,21 @@ const UserApp = ({toggleAdminMode}) => {
       {!isSmallScreen ? (
         <div className="lg:flex lg:relative h-screen">
           <div className="lg:w-[5%] bg-[#030303] h-screen lg:fixed z-50">
-            <Sidebar toggleAdminMode={toggleAdminMode} show={show} isOpen={isOpen} setIsOpen={setIsOpen} setShow={setShow}  showHamburgerTags={showHamburgerTags} setShowHamburgerTags={setShowHamburgerTags}/>
+            <Sidebar
+              show={show}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              setShow={setShow}
+              showHamburgerTags={showHamburgerTags}
+              setShowHamburgerTags={setShowHamburgerTags}
+            />
           </div>
           <div className="absolute bg-[#030303] left-[65px] z-50">
             <Tags show={show} setShow={setShow} />
             {/* <HamburgerMenu isOpen={isOpen} /> */}
           </div>
           <div className="absolute bg-[#030303] left-[65px] z-50">
-            <HamburgerTabs show={showHamburgerTags}  />
+            <HamburgerTabs show={showHamburgerTags} />
             {/* <HamburgerMenu isOpen={isOpen} /> */}
           </div>
 
@@ -115,20 +121,18 @@ const UserApp = ({toggleAdminMode}) => {
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/shorts" element={<Shorts/>} />
-              <Route path="/reactions" element={<Reactions/>} />
-              <Route path="/hot" element={<Hot/>} />
-              <Route path="/explore" element={<Explore/>} />
-              <Route path="/:category/:id/:title" element={<Post/>} />
-              <Route path="/user/:username" element={<UserProfile/>} />
-              <Route path="/videos" element={<Vedios/>} />
-              <Route path="/submitai" element={<SubmitAi/>} />
-              <Route path="/submitimage" element={<SubmitImage/>} />
-              <Route path="/tags" element={<PopularTags/>} />
-              <Route path="/tags/:category" element={<SingleTag/>} />
-              <Route path="/users" element={<TopUsers/>} />
-
-
+              <Route path="/shorts" element={<Shorts />} />
+              <Route path="/reactions" element={<Reactions />} />
+              <Route path="/hot" element={<Hot />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/:category/:id/:title" element={<Post />} />
+              <Route path="/user/:username" element={<UserProfile />} />
+              <Route path="/videos" element={<Vedios />} />
+              <Route path="/submitai" element={<SubmitAi />} />
+              <Route path="/submitimage" element={<SubmitImage />} />
+              <Route path="/tags" element={<PopularTags />} />
+              <Route path="/tags/:category" element={<SingleTag />} />
+              <Route path="/users" element={<TopUsers />} />
             </Routes>
 
             <Footer />
@@ -144,7 +148,6 @@ const UserApp = ({toggleAdminMode}) => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUp />} />
-
           </Routes>
 
           <Footer />
@@ -155,9 +158,6 @@ const UserApp = ({toggleAdminMode}) => {
     </BrowserRouter>
   );
 };
-
-
-
 
 // const AdminRoutes = () => {
 //     const [show, setShow] = useState(false);
@@ -200,11 +200,10 @@ const UserApp = ({toggleAdminMode}) => {
 //             <UserProfileTags show={showUserProfile} setShow={setShowUserProfile}/>
 //           </div>
 
-
 //         <div className="w-[100%] lg:w-[95%] absolute lg:right-0 ">
 //           <div className="bg-[#030303]">
 //             <AdminNavbar />
-            
+
 //           </div>
 
 //           <Routes>
@@ -255,11 +254,6 @@ const UserApp = ({toggleAdminMode}) => {
 //                <Route path="/messages" element={<Messages/>} />
 //                <Route path="/membership" element={<Membership/>} />
 
-              
-
-               
-
-
 //             {/* Admin Routes */}
 //           </Routes>
 
@@ -301,8 +295,6 @@ const UserApp = ({toggleAdminMode}) => {
 //     // Add your other admin routes here
 //   );
 // };
-
-
 
 export default UserApp;
 // export default AdminRoutes;

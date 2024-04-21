@@ -109,76 +109,6 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-// updateProduct
-exports.updateproduct = async (req, res) => {
-  try {
-    const { id } = req.query;
-    if (!id) return res.status(400).json("id is required");
-    const updates = req.body;
-
-    // Handle the uploaded file
-    if (req.file) {
-      const avatarUrl = await uploadBufferToStorage(req.file.buffer);
-      updates.avatar = avatarUrl;
-    }
-
-    const user = await firebaseService.get(id, "products");
-    if (!user) {
-      console.log("here", id);
-      return res.status(404).json({ message: "Product not found." });
-    }
-
-    // Update the user document
-    await firebaseService.updateWithTransaction(
-      { id, collection: "products" },
-      updates
-    );
-    // Get the updated user document
-    const updatedUser = await firebaseService.get(id, "products");
-
-    res.json(updatedUser);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({
-      message: "An error occurred while updating the user.",
-      error: error.message,
-    });
-  }
-};
-// createproduct
-exports.createproduct = async (req, res) => {
-  try {
-    const { name, price, description } = req.body;
-
-    if (!name || !price || !description || !req.file) {
-      return res
-        .status(400)
-        .json({ error: "name , price and avatar are required." });
-    }
-
-    let avatarUrl = null;
-    if (req.file) {
-      avatarUrl = await uploadBufferToStorage(req.file.buffer, "products");
-    }
-    await firebaseService.addDoc({
-      data: {
-        name,
-        price,
-        description,
-        avatar: avatarUrl,
-      },
-      collection: "products",
-    });
-    return res.status(201).json({ message: "Product created successfully." });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({
-      message: "An error occurred while creating the user.",
-      error: error.message,
-    });
-  }
-};
-
 // getListOfUsers
 exports.listproducts = async (req, res) => {
   try {
@@ -202,6 +132,21 @@ exports.getListOfUsers = async (req, res) => {
     console.error(error.message);
     res.status(500).json({
       message: "An error occurred while getting the list of users.",
+      error: error.message,
+    });
+  }
+};
+
+exports.authenticateUser = async (req, res) => {
+  try {
+    const { idToken } = req.body;
+    const userRecord = await firebaseService.verifyIdToken(idToken);
+    const user = await firebaseService.get(userRecord.uid, "users");
+    return res.status(200).json({ ...user, idToken, isAdmin: true });
+  } catch (error) {
+    console.error(error.message, "here");
+    res.status(500).json({
+      message: "An error occurred while authenticating the user.",
       error: error.message,
     });
   }

@@ -115,6 +115,22 @@ class FirestoreProvider {
     const userInfo = await this.auth.verifyIdToken(authToken);
     return userInfo;
   }
+
+  async signInWithEmailAndPassword(email, password) {
+    const userRecord = await this.auth.getUserByEmail(email);
+    if (!userRecord) {
+      throw new Error("No user record found for the provided email.");
+    }
+    const checkPassword = await this.auth.verifyPassword(
+      userRecord.uid,
+      password
+    );
+    if (!checkPassword) {
+      throw new Error("Password is incorrect.");
+    }
+
+    return userRecord;
+  }
   getUserByEmail(email) {
     return this.auth.getUserByEmail(email);
   }

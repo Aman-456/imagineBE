@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { FirebaseService } from "../../services/firebase";
+import { useDispatch } from "react-redux";
+import { setProfile } from "../../store/Features/ProfileSlice";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -10,9 +13,10 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const test=()=>{
-    navigate('/')
-  }
+  const dispatch = useDispatch();
+  const test = () => {
+    navigate("/");
+  };
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -27,11 +31,18 @@ const Login = () => {
         toast.error("baseUrl is not defined");
         return;
       }
-      const response = await axios.post(`${baseUrl}/login`, loginData);
+      const { _tokenResponse } = await FirebaseService.login(
+        loginData.email,
+        loginData.password
+      );
+      const response = await axios.post(`${baseUrl}/api/signin`, {
+        idToken: _tokenResponse.idToken,
+      });
+      dispatch(setProfile(response.data));
       toast.success("Login successfully");
       loginSuccessful = true;
       console.log("success");
-      navigate.push("/");
+      navigate("/");
       setLoginData({
         email: "",
         password: "",
@@ -67,7 +78,7 @@ const Login = () => {
             <h1 className="mx-auto pb-6 text-[40px]">Login</h1>
             <form
               action=""
-              onSubmit={test}
+              onSubmit={handleLoginSubmit}
               className="flex flex-col  gap-2 text-start"
             >
               <label className="text-[20px]" htmlFor="">
@@ -98,7 +109,10 @@ const Login = () => {
                 <input type="checkbox" />
                 <label htmlFor="remember me">Remember Me</label>
               </div>
-              <button type="submit" className="w-[100%] py-3 rounded-xl text-[20px] text-white bg-[#635bff]  hover:bg-[#363192] ">
+              <button
+                type="submit"
+                className="w-[100%] py-3 rounded-xl text-[20px] text-white bg-[#635bff]  hover:bg-[#363192] "
+              >
                 Sign In
               </button>
             </form>

@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 // import App from "./App.jsx";
 import { WagmiWrapperProvider } from "./wrapper.jsx";
 import AdminRoutes from "./App.jsx";
-
+import { Provider } from "react-redux";
+import { store } from "./store";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <WagmiWrapperProvider>
-      {/* <App /> */}
-      <AdminRoutes/>
-    </WagmiWrapperProvider>
+    <Provider store={store}>
+      <WagmiWrapperProvider>
+        {/* <App /> */}
+        <AdminRoutes />
+      </WagmiWrapperProvider>
+    </Provider>
   </React.StrictMode>
 );

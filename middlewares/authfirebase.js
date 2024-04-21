@@ -1,7 +1,5 @@
 const firebaseService = require("../services/firebase");
 
-console.log("middleware firebase");
-
 const getAuthToken = (req, res, next) => {
   if (
     req.headers.authorization &&
